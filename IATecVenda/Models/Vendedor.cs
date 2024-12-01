@@ -1,3 +1,4 @@
+namespace IATecVenda.Models;
 public class Vendedor
 {
     public int Id { get; set; }

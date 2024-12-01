@@ -1,3 +1,5 @@
+
+namespace IATecVenda.Controllers;
 [ApiController]
 [Route("api/iatecvenda")]
 public class VendaController : ControllerBase

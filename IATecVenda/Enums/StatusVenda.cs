@@ -1,3 +1,4 @@
+namespace IATecVenda.Enums;
 public enum StatusVenda
 {
     AguardandoPagamento,

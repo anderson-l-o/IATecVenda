@@ -1,3 +1,5 @@
+namespace IATecVenda.Services;
+
 public class VendaService
 {
     private static List<Venda> _vendas = new();
