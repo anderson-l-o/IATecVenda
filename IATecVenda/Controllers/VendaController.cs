@@ -1,3 +1,10 @@
+using System;
+using IATecVenda.Enums;
+using IATecVenda.Models;
+using IATecVenda.Services;  
+using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace IATecVenda.Controllers;
 [ApiController]
@@ -16,7 +23,7 @@ public class VendaController : ControllerBase
         return CreatedAtAction(nameof(BuscarVenda), new { id = vendaRegistrada.Id }, vendaRegistrada);
     }
 
-    [HttpGet]
+    [HttpGet("{id}")]
     public IActionResult BuscarVenda(int id) 
     {
         var venda = _service.BuscarVenda(id);
@@ -24,7 +31,7 @@ public class VendaController : ControllerBase
         return Ok(venda);
     }
 
-    [httppath("{id}/status/")]
+    [HttpPatch("{id}/status/")]
     public IActionResult AtualizarStatus(int id, [FromBody] StatusVenda novoStatus)
     {
         var atualizado = _service.AtualizarStatus(id, novoStatus);

@@ -1,3 +1,7 @@
+using IATecVenda.Enums;
+using IATecVenda.Models;
+using System.Collections.Generic;
+
 namespace IATecVenda.Services;
 
 public class VendaService
