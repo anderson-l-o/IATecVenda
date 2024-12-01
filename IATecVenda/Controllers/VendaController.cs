@@ -3,8 +3,6 @@ using IATecVenda.Enums;
 using IATecVenda.Models;
 using IATecVenda.Services;  
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace IATecVenda.Controllers;
 [ApiController]
@@ -12,12 +10,13 @@ namespace IATecVenda.Controllers;
 public class VendaController : ControllerBase
 {
 
-    private readonly VendaService _service = new();
+    private static VendaService _service = new();
 
     [HttpPost]  
     public IActionResult RegistrarVenda([FromBody] Venda venda) 
     {
-        if (venda.Itens == null || venda.Itens.Any()) return BadRequest("Uma venda deve conter pelo menos um item.");
+        if (venda.Itens == null || !venda.Itens.Any()) 
+            return BadRequest("Uma venda deve conter pelo menos um item.");
         
         var vendaRegistrada = _service.RegistrarVenda(venda);
         return CreatedAtAction(nameof(BuscarVenda), new { id = vendaRegistrada.Id }, vendaRegistrada);

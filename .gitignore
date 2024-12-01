@@ -33,3 +33,4 @@ IATecVenda/obj/Debug/net8.0/refint/IATecVenda.dll
 IATecVenda/obj/Debug/net8.0/staticwebassets/msbuild.build.IATecVenda.props
 IATecVenda/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.IATecVenda.props
 IATecVenda/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.IATecVenda.props
+.vscode/launch.json

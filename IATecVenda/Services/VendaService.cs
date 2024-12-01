@@ -1,12 +1,11 @@
 using IATecVenda.Enums;
 using IATecVenda.Models;
-using System.Collections.Generic;
 
 namespace IATecVenda.Services;
 
 public class VendaService
 {
-    private static List<Venda> _vendas = new();
+    private readonly List<Venda> _vendas = new();
     
     public Venda RegistrarVenda(Venda venda)
     {
@@ -22,7 +21,7 @@ public class VendaService
     public bool AtualizarStatus(int id, StatusVenda novoStatus)
     {
         var venda = BuscarVenda(id);
-        if (venda != null) return false;
+        if (venda == null) return false;
         
         if (PodeAtualizarStatus(venda.Status, novoStatus))
         {
