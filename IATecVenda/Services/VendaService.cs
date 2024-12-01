@@ -11,17 +11,17 @@ public class VendaService
     public Venda RegistrarVenda(Venda venda)
     {
         venda.Id = _vendas.Count + 1;
-        venda.StatusVenda = StatusVenda.AguardandoPagamento;
-        venda.Data = DateTime.Now;                 
+        venda.Status = StatusVenda.AguardandoPagamento;
+        venda.DataVenda = DateTime.Now;                 
         _vendas.Add(venda);
         return venda;
     }
 
-    public Venda BuscarVenda(int id ) => _vendas.Find(venda => venda.Id == id);
+    public Venda BuscarVenda(int id ) => _vendas.FirstOrDefault(v => v.Id == id);
 
     public bool AtualizarStatus(int id, StatusVenda novoStatus)
     {
-        var venda = BuscarVenda(id); ;
+        var venda = BuscarVenda(id);
         if (venda != null) return false;
         
         if (PodeAtualizarStatus(venda.Status, novoStatus))
