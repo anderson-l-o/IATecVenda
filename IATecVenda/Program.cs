@@ -1,5 +1,10 @@
 
+using IATecVenda.Services;
+using VendasAPI.Services;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<IVendaService, VendaService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

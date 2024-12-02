@@ -1,13 +1,14 @@
 using IATecVenda.Enums;
 using IATecVenda.Models;
+using VendasAPI.Services;
 
 namespace IATecVenda.Services;
 
-public class VendaService
+public class VendaService : IVendaService
 {
-    private readonly List<Venda> _vendas = new();
+    private static List<Venda> _vendas = new();
     
-    public Venda RegistrarVenda(Venda venda)
+    public virtual Venda RegistrarVenda(Venda venda)
     {
         venda.Id = _vendas.Count + 1;
         venda.Status = StatusVenda.AguardandoPagamento;
@@ -16,7 +17,7 @@ public class VendaService
         return venda;
     }
 
-    public Venda BuscarVenda(int id ) => _vendas.FirstOrDefault(v => v.Id == id);
+    public virtual Venda BuscarVenda(int id ) => _vendas.FirstOrDefault(v => v.Id == id);
 
     public bool AtualizarStatus(int id, StatusVenda novoStatus)
     {
